@@ -1,0 +1,5 @@
+{
+  "name": "Smoq Pack Opener 26",
+  "description": "A web application that simulates the experience of opening player packs, collecting cards, and managing virtual currency, inspired by games like Smoq Games 26. Features animated pack openings, different player rarities, a personal collection, and a virtual store.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smoq Pack Opener 26</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
+    <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+<style>
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up { animation: fade-in-up 0.5s ease-out forwards; }
+  
+  @keyframes spin-slow {
+    from { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.1); }
+    to { transform: rotate(360deg) scale(1); }
+  }
+  .animate-spin-slow { animation: spin-slow 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); }
+
+  @keyframes legendary-reveal {
+    0% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
+    50% { transform: scale(1.1); box-shadow: 0 0 80px rgba(255, 215, 0, 0.8); }
+    100% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
+  }
+  .animate-legendary-reveal { animation: legendary-reveal 1.2s ease-in-out; }
+
+
+  .shine-effect::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%);
+    animation: shine 1.5s ease-in-out;
+    opacity: 0;
+  }
+
+  @keyframes shine {
+    0% { transform: scale(0) rotate(45deg); opacity: 0.2; }
+    80% { transform: scale(2) rotate(45deg); opacity: 0.5; }
+    100% { transform: scale(3) rotate(45deg); opacity: 0; }
+  }
+  
+  @keyframes fade-in {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .animate-screen-fade-in { animation: fade-in 0.3s ease-out forwards; }
+
+  .card-flipper {
+    perspective: 1000px;
+    cursor: pointer;
+  }
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  .card-flipper.is-flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .card-back {
+    transform: rotateY(180deg);
+    border-radius: 1rem; /* from PlayerCard */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-back-logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transform: rotate(-15deg);
+  }
+
+  @keyframes slide-in-down {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes slide-out-up {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-100%); opacity: 0; }
+  }
+  .animate-slide-in-down { animation: slide-in-down 0.5s ease-out forwards; }
+  .animate-slide-out-up { animation: slide-out-up 0.5s ease-out forwards; }
+
+  @keyframes new-banner-anim {
+    0%, 100% { transform: translateY(10px) scale(1); opacity: 1; }
+    50% { transform: translateY(0px) scale(1.05); }
+  }
+  .animate-new-banner { animation: new-banner-anim 2s ease-in-out infinite; }
+
+  .pitch {
+    background-color: #53a053;
+    background-image:
+      linear-gradient(to bottom, transparent 49%, rgba(0,0,0,0.1) 49%, rgba(0,0,0,0.1) 51%, transparent 51%),
+      linear-gradient(to bottom, transparent 9.5%, rgba(255,255,255,0.3) 9.5%, rgba(255,255,255,0.3) 10.5%, transparent 10.5%),
+      linear-gradient(to bottom, transparent 19.5%, rgba(255,255,255,0.3) 19.5%, rgba(255,255,255,0.3) 20.5%, transparent 20.5%),
+      linear-gradient(to bottom, transparent 29.5%, rgba(255,255,255,0.3) 29.5%, rgba(255,255,255,0.3) 30.5%, transparent 30.5%),
+      linear-gradient(to bottom, transparent 39.5%, rgba(255,255,255,0.3) 39.5%, rgba(255,255,255,0.3) 40.5%, transparent 40.5%),
+      linear-gradient(to bottom, transparent 59.5%, rgba(255,255,255,0.3) 59.5%, rgba(255,255,255,0.3) 60.5%, transparent 60.5%),
+      linear-gradient(to bottom, transparent 69.5%, rgba(255,255,255,0.3) 69.5%, rgba(255,255,255,0.3) 70.5%, transparent 70.5%),
+      linear-gradient(to bottom, transparent 79.5%, rgba(255,255,255,0.3) 79.5%, rgba(255,255,255,0.3) 80.5%, transparent 80.5%),
+      linear-gradient(to bottom, transparent 89.5%, rgba(255,255,255,0.3) 89.5%, rgba(255,255,255,0.3) 90.5%, transparent 90.5%);
+  }
+  .chem-link {
+    position: absolute;
+    background-color: red;
+    height: 4px;
+    transform-origin: 0 50%;
+    z-index: 0;
+  }
+</style>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
